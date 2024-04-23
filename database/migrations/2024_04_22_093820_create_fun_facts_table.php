@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateFunFactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('fun_facts', function (Blueprint $table) {
             $table->id();
+            $table->string('text'); // Ajoutez la colonne pour le texte du fun fact
+            $table->string('author'); // Ajoutez la colonne pour l'auteur du fun fact
+            $table->date('date'); // Ajoutez la colonne pour la date de création du fun fact
+            $table->string('moderation_status')->default('pending'); // Ajoutez la colonne pour l'état de modération, avec une valeur par défaut de 'pending'
             $table->timestamps();
         });
     }
@@ -24,4 +28,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('fun_facts');
     }
-};
+}
+
