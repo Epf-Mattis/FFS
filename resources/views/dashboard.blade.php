@@ -17,53 +17,52 @@
                         </div>
                     @endif
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Texte</th>
+                                <th>Auteur</th>
+                                <th>Date de création</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($funFacts as $funFact)
                                 <tr>
-                                    <th>Texte</th>
-                                    <th>Auteur</th>
-                                    <th>Date de création</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
+                                    <td>{{ $funFact->text }}</td>
+                                    <td>{{ $funFact->author }}</td>
+                                    <td>{{ $funFact->created_at }}</td>
+                                    <td>
+                                        @if($funFact->moderation_status == 'pending')
+                                            En attente de modération
+                                        @elseif($funFact->moderation_status == 'approved')
+                                            Approuvé
+                                        @else
+                                            Rejeté
+                                        @endif
+                                    </td>
+                                    <td>
+    @if($funFact->moderation_status == 'pending')
+        <form id="approveForm_{{ $funFact->id }}" action="{{ route('funfacts.approve', $funFact->id) }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="button" onclick="approveFunFact({{ $funFact->id }})" class="btn btn-success">Approuver</button>
+        </form>
+        <form id="rejectForm_{{ $funFact->id }}" action="{{ route('funfacts.reject', $funFact->id) }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="button" onclick="rejectFunFact({{ $funFact->id }})" class="btn btn-danger">Rejeter</button>
+        </form>
+    @endif
+    <form id="editForm_{{ $funFact->id }}" style="display: inline;">
+        @csrf
+        <button type="button" class="btn btn-primary" onclick="editFunFact({{ $funFact->id }})">Modifier</button>
+    </form>
+</td>
+
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($funFacts as $funFact)
-                                    <tr>
-                                        <td>{{ $funFact->text }}</td>
-                                        <td>{{ $funFact->author }}</td>
-                                        <td>{{ $funFact->created_at }}</td>
-                                        <td>
-                                            @if($funFact->moderation_status == 'pending')
-                                                <span class="badge bg-warning text-dark">En attente de modération</span>
-                                            @elseif($funFact->moderation_status == 'approved')
-                                                <span class="badge bg-success">Approuvé</span>
-                                            @else
-                                                <span class="badge bg-danger">Rejeté</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($funFact->moderation_status == 'pending')
-                                                <form id="approveForm_{{ $funFact->id }}" action="{{ route('funfacts.approve', $funFact->id) }}" method="POST" style="display: inline;">
-                                                    @csrf
-                                                    <button type="button" onclick="approveFunFact({{ $funFact->id }})" class="btn btn-sm btn-success">Approuver</button>
-                                                </form>
-                                                <form id="rejectForm_{{ $funFact->id }}" action="{{ route('funfacts.reject', $funFact->id) }}" method="POST" style="display: inline;">
-                                                    @csrf
-                                                    <button type="button" onclick="rejectFunFact({{ $funFact->id }})" class="btn btn-sm btn-danger">Rejeter</button>
-                                                </form>
-                                            @endif
-                                            <form id="editForm_{{ $funFact->id }}" style="display: inline;">
-                                                @csrf
-                                                <button type="button" class="btn btn-sm btn-primary" onclick="editFunFact({{ $funFact->id }})">Modifier</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -74,11 +73,47 @@
         }
 
         function approveFunFact(id) {
-            // Code de l'approbation du Fun Fact
+            // Envoyer une requête AJAX pour approuver le Fun Fact
+            fetch('{{ url("/funfacts") }}/' + id + '/approve', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mettre à jour l'interface utilisateur après l'action réussie
+                    var approveForm = document.getElementById('approveForm_' + id);
+                    approveForm.innerHTML = '<button type="button" class="btn btn-success" disabled>Approuvé</button>';
+                } else {
+                    console.error('Erreur lors de l\'approbation du Fun Fact');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors de l\'approbation du Fun Fact :', error);
+            });
         }
 
         function rejectFunFact(id) {
-            // Code du rejet du Fun Fact
+            // Envoyer une requête AJAX pour rejeter le Fun Fact
+            fetch('{{ url("/funfacts") }}/' + id + '/reject', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mettre à jour l'interface utilisateur après l'action réussie
+                    var rejectForm = document.getElementById('rejectForm_' + id);
+                    rejectForm.innerHTML = '<button type="button" class="btn btn-danger" disabled>Rejeté</button>';
+                } else {
+                    console.error('Erreur lors du rejet du Fun Fact');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors du rejet du Fun Fact :', error);
+            });
         }
     </script>
 </x-app-layout>

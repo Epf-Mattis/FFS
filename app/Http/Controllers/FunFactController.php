@@ -48,21 +48,7 @@ class FunFactController extends Controller
         return back()->with('success', 'Fun Fact rejeté avec succès.');
     }
 
-    public function random()
-    {
-        $response = Http::get('http://votre-api.com/api/funfacts/random');
-        $funFact = $response->json();
 
-        return view('FunFactRandom', ['funFact' => $funFact]);
-    }
-
-    public function index()
-    {
-        $response = Http::get('http://votre-api.com/api/funfacts');
-        $funFacts = $response->json();
-
-        return view('FunFactIndex', ['funFacts' => $funFacts]);
-    }
 }
 
    

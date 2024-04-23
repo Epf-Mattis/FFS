@@ -19,8 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
+    
 Route::middleware(['auth'])->group(function () {
     // Routes pour approuver ou refuser un Fun Fact
     Route::put('/funfacts/{funFact}', [FunFactController::class, 'update'])->name('funfacts.update');

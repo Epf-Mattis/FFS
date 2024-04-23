@@ -34,10 +34,10 @@ class FunFact extends Model
         }
     }
 
-    public function random()
+     public function random()
     {
         $funFact = FunFact::where('moderation_status', 'approved')->inRandomOrder()->first();
 
-        return response()->json($funFact);
+        return view ('FunFactRandom', compact('funFact'));
     }
 }
