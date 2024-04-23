@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\FunFact;
 
@@ -24,10 +24,45 @@ class FunFactController extends Controller
         $funFact->text = $validatedData['text'];
         $funFact->author = $validatedData['author'];
         $funFact->date = $validatedData['date'];
-        $funFact->moderation_status = 'pending'; // En attente de modération
+        $funFact->moderation_status = 'pending'; 
         $funFact->save();
 
         return redirect()->back()->with('success', 'Votre Fun Fact a été soumis avec succès et est en attente de modération.');
     }
+
+    // Méthode pour approuver un Fun Fact
+    public function approve($id)
+    {
+        $funFact = FunFact::findOrFail($id);
+        $funFact->update(['moderation_status' => 'approved']);
+
+        return back()->with('success', 'Fun Fact approuvé avec succès.');
+    }
+
+    // Méthode pour rejeter un Fun Fact
+    public function reject($id)
+    {
+        $funFact = FunFact::findOrFail($id);
+        $funFact->update(['moderation_status' => 'rejected']);
+
+        return back()->with('success', 'Fun Fact rejeté avec succès.');
+    }
+
+    public function random()
+    {
+        $response = Http::get('http://votre-api.com/api/funfacts/random');
+        $funFact = $response->json();
+
+        return view('FunFactRandom', ['funFact' => $funFact]);
+    }
+
+    public function index()
+    {
+        $response = Http::get('http://votre-api.com/api/funfacts');
+        $funFacts = $response->json();
+
+        return view('FunFactIndex', ['funFacts' => $funFacts]);
+    }
 }
 
+   

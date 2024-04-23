@@ -11,6 +11,13 @@ class FunFact extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'text',
+        'author',
+        'date',
+        'moderation_status', // Ajoutez 'moderation_status' à la liste des attributs fillables
+    ];
+
     public static function boot()
     {
         parent::boot();
@@ -21,9 +28,16 @@ class FunFact extends Model
                 $table->string('text');
                 $table->string('author');
                 $table->timestamp('created_at')->useCurrent();
-                $table->boolean('approved')->default(false);
                 $table->timestamps();
+                $table->boolean('approved')->default(false);
             });
         }
+    }
+
+    public function random()
+    {
+        $funFact = FunFact::where('moderation_status', 'approved')->inRandomOrder()->first();
+
+        return response()->json($funFact);
     }
 }
