@@ -1,4 +1,5 @@
-<x-app-layout>
+@extends('layouts.app')
+    @section('content')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -45,7 +46,7 @@
                                     <td>
     @if($funFact->moderation_status == 'pending')
         <form id="approveForm_{{ $funFact->id }}" action="{{ route('funfacts.approve', $funFact->id) }}" method="POST" style="display: inline;">
-            @csrf
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button type="button" onclick="approveFunFact({{ $funFact->id }})" class="btn btn-success">Approuver</button>
         </form>
         <form id="rejectForm_{{ $funFact->id }}" action="{{ route('funfacts.reject', $funFact->id) }}" method="POST" style="display: inline;">
@@ -115,5 +116,6 @@
                 console.error('Erreur lors du rejet du Fun Fact :', error);
             });
         }
+        
     </script>
-</x-app-layout>
+    @endsection

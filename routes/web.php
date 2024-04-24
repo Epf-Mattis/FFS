@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FunFactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FunFactApiController;
+
 
 Route::get('/', function () {
     return view('FunFact');
@@ -26,6 +28,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/funfacts/{id}/approve', [FunFactController::class, 'approve'])->name('funfacts.approve');
     Route::post('/funfacts/{id}/reject', [FunFactController::class, 'reject'])->name('funfacts.reject');
 });
+
+Route::get('/funfacts/random', [FunFactApiController::class, 'random']);
+
+Route::get('/funfacts', [FunFactApiController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
