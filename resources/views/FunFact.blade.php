@@ -27,6 +27,10 @@
   <div class="scrolling-text right-to-left">FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
   <div class="scrolling-text left-to-right">Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts FunfactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
   <div class="scrolling-text right-to-left">FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
+  <div class="scrolling-text left-to-right">Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts FunfactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
+  <div class="scrolling-text right-to-left">FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
+  <div class="scrolling-text left-to-right">Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts Funfacts FunfactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
+  <div class="scrolling-text right-to-left">FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFactsFunFacts FunFacts FunFacts FunFacts</div>
 </div>
 
 <div class="form-container">
