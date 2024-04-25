@@ -1,8 +1,12 @@
-# Installation du Projet Fun_Facts
+# Projet Fun_Facts
+
+Ce projet consiste en une application web pour afficher des "fun facts" de manière aléatoire ou dans un ordre spécifique.
+
+## Installation
 
 Pour installer et exécuter le Projet Fun_Facts sur votre machine locale, suivez ces étapes :
 
-## Étapes d'Installation
+### Étapes d'Installation
 
 1. Clonez le repository depuis GitHub :
     ```bash
@@ -11,7 +15,7 @@ Pour installer et exécuter le Projet Fun_Facts sur votre machine locale, suivez
 
 2. Accédez au répertoire du projet :
     ```bash
-    cd Projet-Fun-Facts
+    cd FFS
     ```
 
 3. Installez les dépendances PHP via Composer :
@@ -24,7 +28,7 @@ Pour installer et exécuter le Projet Fun_Facts sur votre machine locale, suivez
     npm install
     ```
 
-## Compilation des Ressources
+### Compilation des Ressources
 
 Après avoir installé les dépendances, vous devez compiler les ressources frontales à l'aide de webpack. Exécutez la commande suivante :
 
@@ -32,7 +36,18 @@ Après avoir installé les dépendances, vous devez compiler les ressources fron
 npm run dev
 ```
 
-## Lancement du serveur
+### Lancement du serveur
+
+Pour lancer le serveur, utilisez la commande suivante :
+
+```bash
+php artisan serve
 ```
-php artisan serv
-```
+
+## Endpoints
+
+L'application expose deux endpoints :
+
+- [http://127.0.0.1:8000/funfacts](http://127.0.0.1:8000/funfacts) : Permet de récupérer tous les "fun facts" dans l'ordre de création du plus récent au plus ancien.
+- [http://127.0.0.1:8000/funfacts/random](http://127.0.0.1:8000/funfacts/random) : Permet de récupérer un "fun fact" aléatoirement.
+
