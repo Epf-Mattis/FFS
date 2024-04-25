@@ -51,3 +51,11 @@ L'application expose deux endpoints :
 - [http://127.0.0.1:8000/funfacts](http://127.0.0.1:8000/funfacts) : Permet de récupérer tous les "fun facts" dans l'ordre de création du plus récent au plus ancien.
 - [http://127.0.0.1:8000/funfacts/random](http://127.0.0.1:8000/funfacts/random) : Permet de récupérer un "fun fact" aléatoirement.
 
+## Idée de FunFacts
+
+Les pingouins n'ont qu'un partenaire dans leur vie et font leur « demande en mariage » en offrant un caillou
+Les avions volent plus lentement aujourd'hui que par le passé
+L'homme qui a inventé les publicités pop-ups s'est officiellement excusé auprès du monde entier
+Les astronautes peuvent voter depuis l'espace
+Le drapeau des Etats-Unis a été dessiné par un lycéen pour un projet de classe
+
