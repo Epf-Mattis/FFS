@@ -6,7 +6,7 @@ Pour installer et exécuter le Projet Fun_Facts sur votre machine locale, suivez
 
 1. Clonez le repository depuis GitHub :
     ```bash
-    git clone https://github.com/votre-utilisateur/Projet-Fun-Facts.git
+    git clone https://github.com/Epf-Mattis/FFS.git
     ```
 
 2. Accédez au répertoire du projet :
@@ -30,6 +30,7 @@ Après avoir installé les dépendances, vous devez compiler les ressources fron
 
 ```bash
 npm run dev
+```
 
 ## Lancement du serveur
 ```
