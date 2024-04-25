@@ -12,7 +12,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-
 Route::post('/funfacts', [FunFactController::class, 'store'])->name('funfacts.store');
 
 Route::middleware(['auth'])->group(function () {
@@ -29,8 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/funfacts/{id}/reject', [FunFactController::class, 'reject'])->name('funfacts.reject');
 });
 
+// Route pour l'API 
 Route::get('/funfacts/random', [FunFactApiController::class, 'random']);
-
 Route::get('/funfacts', [FunFactApiController::class, 'index']);
 
 
