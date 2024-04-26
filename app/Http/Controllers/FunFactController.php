@@ -35,7 +35,6 @@ class FunFactController extends Controller
     {
         $funFact = FunFact::findOrFail($id);
         $funFact->update(['moderation_status' => 'approved']);
-
         return back()->with('success', 'Fun Fact approuvé avec succès.');
     }
 
@@ -44,8 +43,14 @@ class FunFactController extends Controller
     {
         $funFact = FunFact::findOrFail($id);
         $funFact->update(['moderation_status' => 'rejected']);
-
         return back()->with('success', 'Fun Fact rejeté avec succès.');
+    }
+
+    public function modify($id)
+    {
+        $funFact = FunFact::findOrFail($id);
+        $funFact->update(['moderation_status' => 'pending']);
+        return back()->with('success', 'Etat changé');
     }
 
 

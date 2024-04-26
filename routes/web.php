@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Routes pour approuver ou refuser un Fun Fact
     Route::put('/funfacts/{funFact}', [FunFactController::class, 'update'])->name('funfacts.update');
+    Route::post('/funfacts/{id}/modify', [FunFactController::class, 'modify'])->name('funfacts.modify');
     Route::post('/funfacts/{id}/approve', [FunFactController::class, 'approve'])->name('funfacts.approve');
     Route::post('/funfacts/{id}/reject', [FunFactController::class, 'reject'])->name('funfacts.reject');
 });
