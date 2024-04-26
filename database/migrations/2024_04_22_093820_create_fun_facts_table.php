@@ -15,7 +15,6 @@ class CreateFunFactsTable extends Migration
             $table->id();
             $table->string('text'); // Ajoutez la colonne pour le texte du fun fact
             $table->string('author'); // Ajoutez la colonne pour l'auteur du fun fact
-            $table->date('date'); // Ajoutez la colonne pour la date de création du fun fact
             $table->string('moderation_status')->default('pending'); // Ajoutez la colonne pour l'état de modération, avec une valeur par défaut de 'pending'
             $table->timestamps();
         });

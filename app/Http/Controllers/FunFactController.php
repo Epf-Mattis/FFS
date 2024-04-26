@@ -17,13 +17,11 @@ class FunFactController extends Controller
         $validatedData = $request->validate([
             'text' => 'required|string',
             'author' => 'required|string',
-            'date' => 'required|date',
         ]);
 
         $funFact = new FunFact;
         $funFact->text = $validatedData['text'];
         $funFact->author = $validatedData['author'];
-        $funFact->date = $validatedData['date'];
         $funFact->moderation_status = 'pending'; 
         $funFact->save();
 

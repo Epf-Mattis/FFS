@@ -9,7 +9,6 @@ class FunFact extends Model
     protected $fillable = [
         'text',
         'author',
-        'date',
         'moderation_status',
     ];
 }

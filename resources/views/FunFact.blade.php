@@ -44,10 +44,7 @@
             <label for="author">Auteur(e) :</label>
             <input type="text" id="author" name="author" required>
         </div>
-        <div class="form-group">
-            <label for="date">Date de création :</label>
-            <input type="date" id="date" name="date" required>
-        </div>
+        
         <button type="submit" class="form-submit-btn">Soumettre</button>
     </form>
 </div>
