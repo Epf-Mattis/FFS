@@ -46,6 +46,12 @@ mysql -u root -p
 CREATE DATABASE Fun_Facts
 ```
 
+### Faire les Migrations
+ne pas oublier d'activer extension=pdo_mysql.so
+```
+php artisan migrate
+```
+
 
 
 ### Compilation des Ressources
